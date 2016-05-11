@@ -1,0 +1,27 @@
+{
+  "name": "art-show-project",
+  "version": "1.0.0",
+  "description": "Alona's Bezalel Art Show",
+  "main": "app.js",
+  "scripts": {
+    "babel-node": "babel-node --presets=es2015 --ignore='foo|bar|baz'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathang/art-show-project.git"
+  },
+  "author": "Yoni Goldberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathang/art-show-project/issues"
+  },
+  "homepage": "https://github.com/jonathang/art-show-project#readme",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-env": "^0.4.4",
+    "grunt-nodemon": "^0.4.2",
+    "morse": "^0.1.0",
+    "twitter": "^1.2.5"
+  }
+}
