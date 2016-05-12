@@ -15,7 +15,6 @@ var handleTweet = function(tweet)  {
 
 var handleMorseLights = function() {
   console.error(current_tweet);
-  }
 };
 
 twitter.followUser(USER_TO_FOLLOW, handleTweet)
