@@ -2,12 +2,21 @@
 var twitter = require('./twitter');
 var util = require('util');
 var morse = require('morse');
-// A string with comma seperate ids
-var USERS_TO_FOLLOW = '730406269299863552,730418816367366144';
+var Repeat = require('repeat');
+
+var USER_TO_FOLLOW = 'goldberg_yoni'
+var current_tweet = 'No Tweet'
 
 var handleTweet = function(tweet)  {
+  current_tweet = tweet.text;
   console.log(util.inspect(tweet));
   console.log(morse.encode(tweet.text));
 }
 
-twitter.followUser(USERS_TO_FOLLOW, handleTweet);
+var handleMorseLights = function() {
+  console.error(current_tweet);
+  }
+};
+
+twitter.followUser(USER_TO_FOLLOW, handleTweet)
+Repeat(handleMorseLights).every(1000, 'ms').for(1000000, 'hours').start.in(2, 'sec');

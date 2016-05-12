@@ -7,7 +7,7 @@ module.exports = function (grunt) {
         script: 'app.js',
         ignore:  ['node_modules/**'],
         options: {
-           delay: 20000
+           delay: 2000
         }
       }
     },

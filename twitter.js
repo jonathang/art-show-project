@@ -1,5 +1,6 @@
 var Twitter = require('twitter');
 var _ = require('underscore');
+var util = require('util');
 
 var client = new Twitter({
   consumer_key: process.env.CONSUMER_KEY,
@@ -12,20 +13,34 @@ var Tweet = function (tweet) {
   this.text = tweet.text;
   this.createdAt = tweet.created_at;
   this.userName = tweet.user.name;
+  this.userId = tweet.user.id_str;
 };
 
 var params = {screen_name: 'nodejs'};
 
-var followUser = function(userIds, tweetHandler) {
-  client.stream('statuses/filter', { follow: userIds}, function(stream) {
-    stream.on('data', function(t) {
-      var tweet = new Tweet(t);
-      tweetHandler(tweet);
-    });
+var followUser = function(userId, tweetHandler) {
+  client.get('search/tweets', {from: 'goldberg_yoni'}, function(er, tweets, response){
+    if (er) {
+      console.error(er);
+    } else {
+      if (tweets.statuses.length == 0) {
+        console.error("Invalid user to follow, as it has no tweets");
+      } else {
+        var lastTweet = new Tweet(tweets.statuses[0]);
+        tweetHandler(lastTweet);
+        client.stream('statuses/filter', { follow: lastTweet.userId}, function(stream) {
 
-    stream.on('error', function(error) {
-      console.log(error);
-    });
+          stream.on('data', function(t) {
+            var tweet = new Tweet(t);
+            tweetHandler(tweet);
+          });
+
+          stream.on('error', function(error) {
+            console.log(error);
+          });
+        });
+      }
+    }
   });
 };
 
