@@ -17,8 +17,22 @@ var Tweet = function (tweet) {
 };
 
 var params = {screen_name: 'nodejs'};
+var getLastTweet = function(userName, cb) {
+  client.get('search/tweets', {from: 'goldberg_yoni'}, function(er, tweets, response){
+    if (er) {
+      console.error(er);
+    } else {
+      if (tweets.statuses.length == 0) {
+        console.error("Invalid user to follow, as it has no tweets");
+      } else {
+        var lastTweet = new Tweet(tweets.statuses[0]);
+        cb(lastTweet);
+      }
+    }
+  });
+};
 
-var followUser = function(userId, tweetHandler) {
+var followUser = function(userId, tweetHandler, cb) {
   client.get('search/tweets', {from: 'goldberg_yoni'}, function(er, tweets, response){
     if (er) {
       console.error(er);
@@ -39,9 +53,11 @@ var followUser = function(userId, tweetHandler) {
             console.log(error);
           });
         });
+        cb();
       }
     }
   });
 };
 
 exports.followUser = followUser;
+exports.getLastTweet = getLastTweet;

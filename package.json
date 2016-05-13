@@ -24,6 +24,8 @@
     "morse": "^0.1.0",
     "onoff": "^1.1.0",
     "repeat": "0.0.6",
-    "twitter": "^1.2.5"
+    "sleep": "^3.0.1",
+    "twitter": "^1.2.5",
+    "underscore": "^1.8.3"
   }
 }
