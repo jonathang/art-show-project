@@ -14,28 +14,29 @@ var USER_TO_FOLLOW = 'KimKardashian';
 
 var handleTweet = function()  {
   twitter.getLastTweet(USER_TO_FOLLOW, function(tweet) {
-    console.log(tweet);
+    console.log('text: ' + tweet.text);
     var morseText = morse.encode(tweet.text).split('');
+    console.log('morse : ' + morseText);
     _.each(morseText, function(morseChar) {
-      console.log(morseChar);
+
       switch (morseChar) {
         case '?':
-          led.writeSync(false);
+          led.writeSync(0);
           sleep.usleep(SLEEP_PERIOD_MSEC);
           break;
         case ' ':
-          led.writeSync(false);
+          led.writeSync(1);
           sleep.usleep(SLEEP_PERIOD_MSEC);
           break;
         case '.':
-          led.writeSync(true);
+          led.writeSync(1);
           sleep.usleep(SLEEP_PERIOD_MSEC);
-          led.writeSync(false);
+          led.writeSync(0);
           break;
         case '-':
-          led.writeSync(true);
+          led.writeSync(1);
           sleep.usleep(SLEEP_PERIOD_MSEC * 3);
-          led.writeSync(false);
+          led.writeSync(0);
           break;
       }
     });
