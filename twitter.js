@@ -18,7 +18,7 @@ var Tweet = function (tweet) {
 
 var params = {screen_name: 'nodejs'};
 var getLastTweet = function(userName, cb) {
-  client.get('search/tweets', {from: 'goldberg_yoni'}, function(er, tweets, response){
+  client.get('search/tweets', {from: userName}, function(er, tweets, response){
     if (er) {
       console.error(er);
     } else {

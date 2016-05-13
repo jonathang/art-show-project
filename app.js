@@ -9,8 +9,8 @@ var sleep = require('sleep');
 var GPIO = require('onoff').Gpio;
 var led = new GPIO(18, 'out');
 
-var SLEEP_PERIOD_MSEC = 50000
-var USER_TO_FOLLOW = 'goldberg_yoni'
+var SLEEP_PERIOD_MSEC = 50000;
+var USER_TO_FOLLOW = 'KimKardashian';
 
 var handleTweet = function()  {
   twitter.getLastTweet(USER_TO_FOLLOW, function(tweet) {
