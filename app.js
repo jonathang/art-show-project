@@ -12,9 +12,9 @@ if (DEBUG) {
   var led = {
     writeSync : function(value) {
       if (value === 0) {
-        console.log("turn on");
-      } else {
         console.log("turn off");
+      } else {
+        console.log("turn on");
       }
     }
   }
@@ -23,7 +23,7 @@ if (DEBUG) {
   var led = new GPIO(18, 'out');
 }
 
-var SLEEP_PERIOD_MSEC = 100000 ;
+var SLEEP_PERIOD_MSEC = 150000 ;
 var USER_TO_FOLLOW = 'KimKardashian';
 
 var handleTweet = function()  {
