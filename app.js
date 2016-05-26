@@ -12,9 +12,9 @@ if (DEBUG) {
   var led = {
     writeSync : function(value) {
       if (value === 0) {
-        console.log("turn off");
-      } else {
         console.log("turn on");
+      } else {
+        console.log("turn off");
       }
     }
   }
