@@ -23,7 +23,7 @@ if (DEBUG) {
   var led = new GPIO(18, 'out');
 }
 
-var SLEEP_PERIOD_MSEC = 500000 ;
+var SLEEP_PERIOD_MSEC = 200000 ;
 var USER_TO_FOLLOW = 'KimKardashian';
 
 var handleTweet = function()  {
