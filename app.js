@@ -72,4 +72,4 @@ var handleTweet = function()  {
   });
 };
 
-Repeat(handleTweet).every(1, 'minute').for(1000000, 'hours').start.in(2, 'sec');
+Repeat(handleTweet).every(30, 'minute').for(1000000, 'hours').start.in(2, 'sec');
